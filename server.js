@@ -8,4 +8,8 @@ server.use(express.json());
 
 server.use("/api/accounts", AccountsRouter);
 
+server.get("/", (req, res) => {
+  res.send("<h4>Creating DB Helpers with Knex</h4>");
+});
+
 module.exports = server;

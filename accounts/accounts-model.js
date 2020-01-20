@@ -14,7 +14,7 @@ function insertAccount({ name, budget }) {
   return db("accounts").insert({ name, budget });
 }
 
-function insertAccountById({ id, title, accounts }) {
+function insertAccountById({ id, name, budget }) {
   return db("accounts")
     .where({ id })
     .update({ name, budget });
