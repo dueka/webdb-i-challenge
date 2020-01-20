@@ -1,5 +1,5 @@
 const express = require("express");
-const { getAllAccounts } = require("./accounts-model");
+const { getAllAccounts, getAccountById } = require("./accounts-model");
 // database access using knex
 
 const router = express.Router();
@@ -13,9 +13,16 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", (req, res) => {});
+router.get("/:id", async (req, res) => {
+  try {
+    const getAccountId = await getAccountById(req.params.id);
+    res.json(getAccountById);
+  } catch (e) {
+    console.log(e);
+  }
+});
 
-router.post("/", (req, res) => {});
+router.post("/", async (req, res) => {});
 
 router.put("/:id", (req, res) => {});
 
