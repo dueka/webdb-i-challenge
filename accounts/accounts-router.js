@@ -1,11 +1,17 @@
 const express = require("express");
-
+const { getAllAccounts } = require("./accounts-model");
 // database access using knex
-const db = require("../data/db-config.js");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {});
+router.get("/", async (req, res) => {
+  try {
+    const allAccounts = await getAllAccounts();
+    res.json(allAccounts);
+  } catch (e) {
+    console.log(e);
+  }
+});
 
 router.get("/:id", (req, res) => {});
 
