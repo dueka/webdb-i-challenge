@@ -10,7 +10,26 @@ function getAccountById(id) {
     .first();
 }
 
+function insertAccount({ name, budget }) {
+  return db("accounts").insert({ name, budget });
+}
+
+function insertAccountById({ id, title, accounts }) {
+  return db("accounts")
+    .where({ id })
+    .update({ name, budget });
+}
+
+function deleteAccountById(id) {
+  return db("accounts")
+    .where({ id })
+    .del();
+}
+
 module.exports = {
   getAllAccounts,
-  getAccountById
+  getAccountById,
+  insertAccount,
+  insertAccountById,
+  deleteAccountById
 };
